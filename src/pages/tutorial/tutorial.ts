@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, MenuController, NavController, Platform } from 'ionic-angular';
 
 import { TranslateService } from '@ngx-translate/core';
+import {MainPage} from "../index";
 
 export interface Slide {
   title: string;
@@ -34,7 +35,7 @@ export class TutorialPage {
           {
             title: values.TUTORIAL_SLIDE1_TITLE,
             description: values.TUTORIAL_SLIDE1_DESCRIPTION,
-            image: 'assets/img/ica-slidebox-img-1.png',
+            image: 'assets/imgs/carpool.svg',
           },
           {
             title: values.TUTORIAL_SLIDE2_TITLE,
@@ -56,7 +57,6 @@ export class TutorialPage {
       direction: 'forward'
     });
   }
-
   onSlideChangeStart(slider) {
     this.showSkip = !slider.isEnd();
   }
@@ -65,7 +65,11 @@ export class TutorialPage {
     // the root left menu should be disabled on the tutorial page
     this.menu.enable(false);
   }
-
+  ionViewWillEnter(){
+   if(localStorage.getItem("userDetail")!== null){
+     this.navCtrl.setRoot(MainPage);
+   }
+  }
   ionViewWillLeave() {
     // enable the root left menu when leaving the tutorial page
     this.menu.enable(true);

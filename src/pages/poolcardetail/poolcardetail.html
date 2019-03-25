@@ -1,0 +1,35 @@
+<!--
+  Generated template for the PoolcardetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>poolcardetail</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <h2><ion-icon ios="ios-pin" md="md-pin"></ion-icon> : {{item?.from}} To {{item?.to}}</h2>
+  <h2><ion-icon ios="ios-calendar" md="md-calendar"></ion-icon> : {{item?.date| date}}</h2>
+  <h2>  <ion-icon ios="ios-time" md="md-time"></ion-icon> : {{item?.time}}</h2>
+  <h2><i>Seats: {{item?.seats}}</i></h2>
+  <h2> <ion-icon name="car"></ion-icon> : {{item?.carName}}</h2>
+  <p> <ion-icon name="contact"></ion-icon> : {{item?.name}}</p>
+  <p><ion-icon name="call"></ion-icon> : {{item?.contact}}</p>
+  <br>
+  <div>
+    <h3>FOllowing are applied</h3>
+   <ion-list>
+     <ion-item *ngFor="let list of addpoolCar">
+       <p>name: {{list?.name}}</p>
+       <p>pickup Point: {{list?.pickupPoint}}</p>
+       <p>contact :{{list?.contact}}</p>
+       <hr>
+     </ion-item>
+   </ion-list>
+  </div>
+
+</ion-content>

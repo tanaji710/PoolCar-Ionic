@@ -1,0 +1,63 @@
+<!--
+  Generated template for the AddPoolCarPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>add-pool-car</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-list>
+<ion-label>Note: Currently We have car pool from Sangli to Islampur</ion-label>
+      <ion-item>
+        <ion-label floating>Car Name</ion-label>
+        <ion-input type="text" name="name" [(ngModel)]="pooCarDetails.carName"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Your Name</ion-label>
+        <ion-input type="text" name="name" [(ngModel)]="pooCarDetails.name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Contact</ion-label>
+        <ion-input type="number" name="name" [(ngModel)]="pooCarDetails.contact"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>From</ion-label>
+        <ion-select placeholder="Select from location" [(ngModel)]="pooCarDetails.from">
+          <ion-option value="Sangli">Sangli</ion-option>
+          <ion-option value="Miraj">Miraj</ion-option>
+          <ion-option value="Kupwad">Kupwad</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>To</ion-label>
+        <ion-select placeholder="Select to location" [(ngModel)]="pooCarDetails.to">
+          <ion-option value="Ashta">Ashta</ion-option>
+          <ion-option value="Islampur">Islampur</ion-option>
+          <ion-option value="Karad">Karad</ion-option>
+          <ion-option value="Kolhapur">Kolhapur</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Seats</ion-label>
+        <ion-input type="number" name="seats" [(ngModel)]="pooCarDetails.seats"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Date</ion-label>
+        <ion-datetime display-format="MMM DD, YYYY HH:mm" [(ngModel)]="pooCarDetails.date"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Time</ion-label>
+        <ion-input [(ngModel)]="pooCarDetails.time"></ion-input>
+      </ion-item>
+      <ion-label>Note: Write Time in HH:MM format</ion-label>
+      <div padding>
+        <button ion-button color="primary" block (click)="addPoolCar()">Add car pool</button>
+      </div>
+
+    </ion-list>
+</ion-content>

@@ -4,6 +4,10 @@ import { IonicPage, NavController, ToastController } from 'ionic-angular';
 
 import { User } from '../../providers';
 import { MainPage } from '../';
+import {ProfilePage} from "../profile/profile";
+import {Profile} from "../../models/profile.interface";
+import {HttpClient} from "@angular/common/http";
+import {WelcomePage} from "../welcome/welcome";
 
 @IonicPage()
 @Component({
@@ -14,40 +18,56 @@ export class SignupPage {
   // The account fields for the login form.
   // If you're using the username field with or without email, make
   // sure to add it to the type
-  account: { name: string, email: string, password: string } = {
-    name: 'Test Human',
-    email: 'test@example.com',
-    password: 'test'
-  };
+  account= { } as Profile;
 
   // Our translated text strings
   private signupErrorString: string;
+  private datavalid: Profile[];
 
   constructor(public navCtrl: NavController,
-    public user: User,
     public toastCtrl: ToastController,
-    public translateService: TranslateService) {
+    public translateService: TranslateService, private http:HttpClient) {
 
     this.translateService.get('SIGNUP_ERROR').subscribe((value) => {
       this.signupErrorString = value;
     })
   }
 
-  doSignup() {
+ async doSignup() {
     // Attempt to login in through our User service
-    this.user.signup(this.account).subscribe((resp) => {
-      this.navCtrl.push(MainPage);
-    }, (err) => {
-
-      this.navCtrl.push(MainPage);
-
-      // Unable to sign up
-      let toast = this.toastCtrl.create({
-        message: this.signupErrorString,
-        duration: 3000,
-        position: 'top'
-      });
-      toast.present();
-    });
+   this.http.get('http://localhost:8080/api/users').subscribe(data=>{
+     this.datavalid = <Profile[]>data;
+     if(this.datavalid.findIndex(obj=>obj.email == this.account.email) < 0) {
+       this.http.post('http://localhost:8080/api/users', this.account).subscribe(data => {
+         const temp = <Profile> data;
+         localStorage.setItem("userDetail", temp._id);
+           sessionStorage.setItem("id", temp._id);
+           let toast = this.toastCtrl.create({
+             message: 'Register Succesful',
+             duration: 3000,
+             position: 'top'
+           });
+           toast.present();
+           this.navCtrl.setRoot(MainPage);
+         },
+         error => {
+           console.error(error);
+           let toast = this.toastCtrl.create({
+             message: 'Unable to Register please try again',
+             duration: 3000,
+             position: 'top'
+           });
+           toast.present();
+         })
+     }else {
+       let toast = this.toastCtrl.create({
+         message: 'Email Already present please login',
+         duration: 3000,
+         position: 'top'
+       });
+       toast.present();
+       this.navCtrl.setRoot(WelcomePage);
+     }
+   });
   }
 }

@@ -12,15 +12,21 @@
     <ion-list>
 
       <ion-item>
-        <ion-label fixed>{{ 'NAME' | translate }}</ion-label>
-        <ion-input type="text" [(ngModel)]="account.name" name="name"></ion-input>
+        <ion-label floating>First Name</ion-label>
+        <ion-input type="text" [(ngModel)]="account.firstName" name="fname"></ion-input>
       </ion-item>
-
       <ion-item>
-        <ion-label fixed>{{ 'EMAIL' | translate }}</ion-label>
+        <ion-label floating>Last Name</ion-label>
+        <ion-input type="text" [(ngModel)]="account.lastName" name="lname"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>{{ 'EMAIL' | translate }}</ion-label>
         <ion-input type="email" [(ngModel)]="account.email" name="email"></ion-input>
       </ion-item>
-
+      <ion-item>
+        <ion-label floating>Contact</ion-label>
+        <ion-input type="text" [(ngModel)]="account.contact" name="contact"></ion-input>
+      </ion-item>
       <!--
       Want to add a Username? Here you go:
 
@@ -31,7 +37,7 @@
       -->
 
       <ion-item>
-        <ion-label fixed>{{ 'PASSWORD' | translate }}</ion-label>
+        <ion-label floating>{{ 'PASSWORD' | translate }}</ion-label>
         <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
       </ion-item>
 
@@ -41,4 +47,9 @@
 
     </ion-list>
   </form>
+  <ion-card>
+    <ion-card-content>
+      <img src="../../assets/imgs/login.svg" class="img-responsive">
+    </ion-card-content>
+  </ion-card>
 </ion-content>

@@ -1,0 +1,30 @@
+<!--
+  Generated template for the MyjoinpoolPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>myjoinpool</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-card *ngFor="let item of poolcarData">
+      <ion-card-content>
+        <ion-item-sliding>
+          <button ion-item>
+            name: {{item.name}} <br>
+            Id : {{item.poolId}}
+            <h2> PickUp Point: {{item.pickupPoint}}</h2>
+          </button>
+
+          <ion-item-options>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+</ion-content>

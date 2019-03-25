@@ -7,39 +7,45 @@
 </ion-header>
 
 <ion-content>
+  <div class="container">
+         <div class="card hovercard">
+          <div class="cardheader">
 
-  <form [formGroup]="form" *ngIf="settingsReady">
-    <ion-list *ngIf="page == 'main'">
-      <ion-item>
-        <ion-label>{{ 'SETTINGS_OPTION1' | translate }}</ion-label>
-        <ion-toggle formControlName="option1"></ion-toggle>
-      </ion-item>
+          </div>
+          <div class="avatar">
+            <img alt="" src="../../assets/icon/user.png">
+          </div>
+          <div class="info">
+            <div class="title">
+              {{userDetails?.firstName}} {{userDetails?.lastName}}
+            </div>
+            <div class="desc"></div>
+            <div class="desc">{{userDetails?.email}}</div>
+            <div class="desc">{{userDetails?.contact}}</div>
+          </div>
+        </div>
+    <ion-card>
+      <ion-card-content>
+        <ion-item-sliding>
+          <button ion-item (click)="openmycreate()">
+            My Own Pool Cars
+          </button>
 
-      <ion-item>
-        <ion-label>{{ 'SETTINGS_OPTION2' | translate }}</ion-label>
-        <ion-input formControlName="option2"></ion-input>
-      </ion-item>
+          <ion-item-options>
+          </ion-item-options>
+        </ion-item-sliding>
+        <ion-item-sliding>
+          <button ion-item (click)="openjoinpool()">
+            Joinned Pool Cars
+          </button>
 
-      <ion-item>
-        <ion-label>{{ 'SETTINGS_OPTION3' | translate }}</ion-label>
-        <ion-select formControlName="option3">
-          <ion-option value="1" checked="true">1</ion-option>
-          <ion-option value="2">2</ion-option>
-          <ion-option value="3">3</ion-option>
-        </ion-select>
-      </ion-item>
-
-      <button ion-item [navPush]="subSettings" [navParams]="profileSettings">
-        {{ 'SETTINGS_PROFILE_BUTTON' | translate }}
-      </button>
-    </ion-list>
-
-    <ion-list *ngIf="page == 'profile'">
-      <ion-item>
-        <ion-label>{{ 'SETTINGS_OPTION4' | translate }}</ion-label>
-        <ion-input formControlName="option4"></ion-input>
-      </ion-item>
-    </ion-list>
-  </form>
-
+          <ion-item-options>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-card-content>
+    </ion-card>
+      </div>
+  <div style="display: flex; justify-content: center;">
+<button ion-button (click)="logout()">Logout</button>
+  </div>
 </ion-content>

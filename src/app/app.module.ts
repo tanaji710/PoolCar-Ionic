@@ -13,6 +13,15 @@ import { Items } from '../mocks/providers/items';
 import { Settings, User, Api } from '../providers';
 import { MyApp } from './app.component';
 
+import {ProfilePageModule} from "../pages/profile/profile.module";
+import {AddPoolCarPageModule} from "../pages/add-pool-car/add-pool-car.module";
+import {SearchPoolPageModule} from "../pages/search-pool/search-pool.module";
+import {LoginPageModule} from "../pages/login/login.module";
+import {PoolcardetailPageModule} from "../pages/poolcardetail/poolcardetail.module";
+import {MyjoinpoolPage} from "../pages/myjoinpool/myjoinpool";
+import {MyjoinpoolPageModule} from "../pages/myjoinpool/myjoinpool.module";
+import {MycreatepoolPageModule} from "../pages/mycreatepool/mycreatepool.module";
+
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
 export function createTranslateLoader(http: HttpClient) {
@@ -49,6 +58,13 @@ export function provideSettings(storage: Storage) {
       }
     }),
     IonicModule.forRoot(MyApp),
+    ProfilePageModule,
+    AddPoolCarPageModule,
+    SearchPoolPageModule,
+    LoginPageModule,
+    PoolcardetailPageModule,
+    MyjoinpoolPageModule,
+    MycreatepoolPageModule,
     IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],

@@ -1,9 +1,16 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
 
 import { Settings } from '../../providers';
+import {WelcomePage} from "../welcome/welcome";
+import {Profile} from "../../models/profile.interface";
+
+import {Observable} from "rxjs";
+import {HttpClient, HttpParams} from "@angular/common/http";
+import {MyjoinpoolPage} from "../myjoinpool/myjoinpool";
+import {MycreatepoolPage} from "../mycreatepool/mycreatepool";
 
 /**
  * The Settings page is a simple form that syncs with a Settings provider
@@ -31,65 +38,48 @@ export class SettingsPage {
   page: string = 'main';
   pageTitleKey: string = 'SETTINGS_TITLE';
   pageTitle: string;
-
+  userData: Profile[];
+  userDetails: Profile;
   subSettings: any = SettingsPage;
-
+  profileData: Observable<any>;
   constructor(public navCtrl: NavController,
     public settings: Settings,
     public formBuilder: FormBuilder,
     public navParams: NavParams,
-    public translate: TranslateService) {
+    public translate: TranslateService,
+             private http: HttpClient,
+              private toast:ToastController) {
   }
 
-  _buildForm() {
-    let group: any = {
-      option1: [this.options.option1],
-      option2: [this.options.option2],
-      option3: [this.options.option3]
-    };
-
-    switch (this.page) {
-      case 'main':
-        break;
-      case 'profile':
-        group = {
-          option4: [this.options.option4]
-        };
-        break;
-    }
-    this.form = this.formBuilder.group(group);
-
-    // Watch the form for changes, and
-    this.form.valueChanges.subscribe((v) => {
-      this.settings.merge(this.form.value);
-    });
-  }
 
   ionViewDidLoad() {
-    // Build an empty form for the template to render
-    this.form = this.formBuilder.group({});
+
   }
 
   ionViewWillEnter() {
     // Build an empty form for the template to render
-    this.form = this.formBuilder.group({});
-
-    this.page = this.navParams.get('page') || this.page;
-    this.pageTitleKey = this.navParams.get('pageTitleKey') || this.pageTitleKey;
-
-    this.translate.get(this.pageTitleKey).subscribe((res) => {
-      this.pageTitle = res;
+    let params = new HttpParams().set('id', localStorage.getItem('userDetails'));
+    this.http.get('http://localhost:8080/api/users/', {params}).subscribe(data=>{
+      this.userData = <Profile[]> data;
+      const count =this.userData.findIndex(obj => obj.email == localStorage.getItem('userDetail'))
+     this.userDetails = this.userData[count];
     })
-
-    this.settings.load().then(() => {
-      this.settingsReady = true;
-      this.options = this.settings.allSettings;
-
-      this._buildForm();
-    });
   }
 
   ngOnChanges() {
     console.log('Ng All Changes');
+  }
+
+  logout() {
+    localStorage.clear();
+    this.navCtrl.setRoot("WelcomePage");
+  }
+
+  openjoinpool() {
+this.navCtrl.push(MyjoinpoolPage);
+  }
+
+  openmycreate() {
+this.navCtrl.push(MycreatepoolPage);
   }
 }

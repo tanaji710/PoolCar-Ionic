@@ -3,6 +3,8 @@ import { IonicPage, ModalController, NavController } from 'ionic-angular';
 
 import { Item } from '../../models/item';
 import { Items } from '../../providers';
+import {SearchPoolPage} from "../search-pool/search-pool";
+import {AddPoolCarPage} from "../add-pool-car/add-pool-car";
 
 @IonicPage()
 @Component({
@@ -46,9 +48,11 @@ export class ListMasterPage {
   /**
    * Navigate to the detail page for this item.
    */
-  openItem(item: Item) {
-    this.navCtrl.push('ItemDetailPage', {
-      item: item
-    });
+
+  gotoSearchPool() {
+    this.navCtrl.push(SearchPoolPage);
+  }
+  gotoAddPool(){
+    this.navCtrl.push(AddPoolCarPage);
   }
 }

@@ -7,12 +7,26 @@
 </ion-header>
 
 
-<ion-content>
-  <div class="item-profile" text-center #profilePic [style.background-image]="'url(' + item.profilePic + ')'">
-  </div>
+<ion-content padding>
+    <h2><ion-icon ios="ios-pin" md="md-pin"></ion-icon> : {{item.from}} To {{item.to}}</h2>
+    <h2><ion-icon ios="ios-calendar" md="md-calendar"></ion-icon> : {{item.date| date}}</h2>
+    <h2>  <ion-icon ios="ios-time" md="md-time"></ion-icon> : {{item.time}}</h2>
+    <h2><i>Seats: {{item.seats}}</i></h2>
+    <h2> <ion-icon name="car"></ion-icon> : {{item.carName}}</h2>
+    <p> <ion-icon name="contact"></ion-icon> : {{item.name}}</p>
+    <p><ion-icon name="call"></ion-icon> : {{item.contact}}</p>
+  <br>
+    <div>
+      <ion-label>Fill following form to book</ion-label>
+      <ion-item>
+        <ion-label floating>Adhaar No</ion-label>
+        <ion-input type="text" [(ngModel)]="addpoolCar.addharNo"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Write pickup Point</ion-label>
+        <ion-input type="text" [(ngModel)]="addpoolCar.pickupPoint"></ion-input>
+      </ion-item>
+      <button ion-button >Book Car Pool</button>
+    </div>
 
-  <div class="item-detail" padding>
-    <h2>{{item.name}}</h2>
-    <p>{{item.about}}</p>
-  </div>
 </ion-content>
