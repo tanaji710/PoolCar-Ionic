@@ -7,6 +7,7 @@ import { User } from '../../providers';
 import { MainPage } from '../';
 import {HttpClient} from "@angular/common/http";
 import {Profile} from "../../models/profile.interface";
+import {ItemInterface} from "../../models/dataMessage";
 
 @IonicPage()
 @Component({
@@ -40,8 +41,8 @@ export class LoginPage {
   async doLogin() {
     this.http.post('http://localhost:8080/api/users/login/', this.account).subscribe(data=>{
       console.log(Object.keys(data).length);
-
-      if(!data.message) {
+      const temp = <ItemInterface> data;
+      if(!temp.message) {
         this.dataValidate = <Profile>data;
         console.log(this.dataValidate);
         localStorage.setItem("userDetail", this.dataValidate._id);
