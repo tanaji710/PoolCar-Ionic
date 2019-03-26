@@ -18,6 +18,7 @@ import {HttpClient, HttpParams} from "@angular/common/http";
 })
 export class MycreatepoolPage {
   poolcarData: PoolCar[];
+  pooldata: Array<PoolCar> = [];
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpClient) {
   }
 
@@ -26,6 +27,14 @@ export class MycreatepoolPage {
     console.log('ionViewDidLoad MycreatepoolPage');
 this.http.get('http://localhost:8080/api/poolcars/',{params}).subscribe(data=>{
     this.poolcarData = <PoolCar[]> data;
+  this.poolcarData.forEach((item, index) => {
+    if(item.UserId == localStorage.getItem('userDetail')){
+      this.pooldata.push(item);
+    }
+
+  })
+  console.log(this.pooldata);
+
 })
   }
   openItem(item: Item) {

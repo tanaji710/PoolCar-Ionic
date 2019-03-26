@@ -12,13 +12,14 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-card *ngFor="let item of poolcarData">
+    <ion-card *ngFor="let item of pooldata">
       <ion-card-content>
         <ion-item-sliding>
           <button ion-item>
             name: {{item.name}} <br>
             Id : {{item.poolId}}
             <h2> PickUp Point: {{item.pickupPoint}}</h2>
+            Status: <p *ngIf="item.accepted"> Accepted</p><p *ngIf="!item.accepted"> Not Accepted contact to owner</p>
           </button>
 
           <ion-item-options>
@@ -26,5 +27,8 @@
         </ion-item-sliding>
       </ion-card-content>
     </ion-card>
+    <p *ngIf="pooldata.length == 0">
+      No Data available
+    </p>
   </ion-list>
 </ion-content>

@@ -23,10 +23,18 @@
         <ion-input type="text" [(ngModel)]="addpoolCar.addharNo"></ion-input>
       </ion-item>
       <ion-item>
+      <ion-label floating>Name</ion-label>
+      <ion-input type="text" [(ngModel)]="addpoolCar.name"></ion-input>
+    </ion-item>
+      <ion-item>
+        <ion-label floating>contact</ion-label>
+        <ion-input type="number" [(ngModel)]="addpoolCar.contact"></ion-input>
+      </ion-item>
+      <ion-item>
         <ion-label floating>Write pickup Point</ion-label>
         <ion-input type="text" [(ngModel)]="addpoolCar.pickupPoint"></ion-input>
       </ion-item>
-      <button ion-button >Book Car Pool</button>
+      <button ion-button (click)="request()">Book Car Pool</button>
     </div>
 
 </ion-content>

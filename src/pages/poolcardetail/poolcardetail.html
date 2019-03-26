@@ -27,6 +27,7 @@
        <p>name: {{list?.name}}</p>
        <p>pickup Point: {{list?.pickupPoint}}</p>
        <p>contact :{{list?.contact}}</p>
+       <button ion-button *ngIf="!list?.accepted" (click)="accept(list)">Accept</button>
        <hr>
      </ion-item>
    </ion-list>

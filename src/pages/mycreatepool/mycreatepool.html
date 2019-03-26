@@ -12,7 +12,7 @@
 
 <ion-content padding>
 <ion-list>
-  <ion-card *ngFor="let item of poolcarData">
+  <ion-card *ngFor="let item of pooldata">
     <ion-card-content>
       <ion-item-sliding>
         <button ion-item (click)="openItem(item)">
@@ -27,5 +27,8 @@
       </ion-item-sliding>
     </ion-card-content>
   </ion-card>
+  <p *ngIf="pooldata.length == 0">
+    No Data available
+  </p>
 </ion-list>
 </ion-content>

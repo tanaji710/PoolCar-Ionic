@@ -66,9 +66,6 @@ export class TutorialPage {
     this.menu.enable(false);
   }
   ionViewWillEnter(){
-   if(localStorage.getItem("userDetail")!== null && localStorage.getItem("userDetail")!= undefined){
-     this.navCtrl.setRoot(MainPage);
-   }
   }
   ionViewWillLeave() {
     // enable the root left menu when leaving the tutorial page

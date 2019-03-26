@@ -18,6 +18,7 @@ import {AddpoolcarInterface} from "../../models/addpoolcar.interface";
 })
 export class MyjoinpoolPage {
   poolcarData: AddpoolcarInterface[];
+  pooldata: Array<AddpoolcarInterface> = [];
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpClient) {
   }
 
@@ -26,7 +27,12 @@ export class MyjoinpoolPage {
     let params = new HttpParams().set('id', localStorage.getItem('userDetails'));
     this.http.get('http://localhost:8080/api/addpoolcars/', {params}).subscribe(data=>{
       this.poolcarData = <AddpoolcarInterface[]> data;
-    })
+      this.poolcarData.forEach((item, index) => {
+        if(item.UserId == localStorage.getItem('userDetail')){
+          this.pooldata.push(item);
+        }
+      })
+    });
   }
 
 }

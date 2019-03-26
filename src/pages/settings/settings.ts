@@ -58,11 +58,14 @@ export class SettingsPage {
 
   ionViewWillEnter() {
     // Build an empty form for the template to render
-    let params = new HttpParams().set('id', localStorage.getItem('userDetails'));
+    let params = new HttpParams().set('id', localStorage.getItem('userDetail'));
     this.http.get('http://localhost:8080/api/users/', {params}).subscribe(data=>{
       this.userData = <Profile[]> data;
-      const count =this.userData.findIndex(obj => obj.email == localStorage.getItem('userDetail'))
+      console.log(this.userData);
+      const count =this.userData.findIndex(obj => obj._id == localStorage.getItem('userDetail'))
+      console.log(count);
      this.userDetails = this.userData[count];
+      console.log(this.userDetails);
     })
   }
 

@@ -23,7 +23,7 @@ export class LoginPage {
     email: '',
     password: ''
   };
-   public dataValidate: Profile;
+   public dataValidate: Profile[];
   // Our translated text strings
   private loginErrorString: string;
 
@@ -43,10 +43,11 @@ export class LoginPage {
       console.log(Object.keys(data).length);
       const temp = <ItemInterface> data;
       if(!temp.message) {
-        this.dataValidate = <Profile>data;
-        console.log(this.dataValidate);
-        localStorage.setItem("userDetail", this.dataValidate._id);
-        sessionStorage.setItem("lastname", this.dataValidate._id);
+        this.dataValidate = <Profile[]>data;
+        const id= this.dataValidate[0]._id;
+        console.log(id)
+        localStorage.setItem("userDetail", id);
+        console.log(id + localStorage.getItem('userDetail'));
         let toast = this.toastCtrl.create({
           message: "Login Successful",
           duration: 3000,

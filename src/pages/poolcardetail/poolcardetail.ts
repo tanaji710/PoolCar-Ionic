@@ -30,7 +30,11 @@ export class PoolcardetailPage {
     let params = new HttpParams().set('id', this.item._id);
    this.http.get('http://localhost:8080/api/addpoolcars/', {params}).subscribe(data=>{
      this.addpoolCar = <AddpoolcarInterface[]> data;
+     console.log(this.addpoolCar);
    })
   }
 
+  accept(list: AddpoolcarInterface) {
+
+  }
 }
