@@ -21,7 +21,6 @@ import {PoolcardetailPageModule} from "../pages/poolcardetail/poolcardetail.modu
 import {MyjoinpoolPage} from "../pages/myjoinpool/myjoinpool";
 import {MyjoinpoolPageModule} from "../pages/myjoinpool/myjoinpool.module";
 import {MycreatepoolPageModule} from "../pages/mycreatepool/mycreatepool.module";
-import { DataProvider } from '../providers/data/data';
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -81,8 +80,7 @@ export function provideSettings(storage: Storage) {
     StatusBar,
     { provide: Settings, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development
-    { provide: ErrorHandler, useClass: IonicErrorHandler },
-    DataProvider
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
 export class AppModule { }
