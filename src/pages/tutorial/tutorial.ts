@@ -66,7 +66,7 @@ export class TutorialPage {
     this.menu.enable(false);
   }
   ionViewWillEnter(){
-   if(localStorage.getItem("userDetail")!== null){
+   if(localStorage.getItem("userDetail")!== null && localStorage.getItem("userDetail")!= undefined){
      this.navCtrl.setRoot(MainPage);
    }
   }
