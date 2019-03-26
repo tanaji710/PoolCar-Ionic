@@ -4,6 +4,7 @@ import {PoolCar} from "../../models/poolcar.interface";
 import {AddpoolcarInterface} from "../../models/addpoolcar.interface";
 import {Items} from "../../mocks/providers/items";
 import {HttpClient, HttpParams} from "@angular/common/http";
+import {MainPage} from "../index";
 
 /**
  * Generated class for the PoolcardetailPage page.
@@ -35,6 +36,11 @@ export class PoolcardetailPage {
   }
 
   accept(list: AddpoolcarInterface) {
-
+    const url="http://localhost:8080/api/addpoolcars/";
+    console.log('called'+list._id);
+          this.http.put(url+list._id, {"accepted": true}).subscribe(data=>{
+            this.navCtrl.setRoot(MainPage);
+              console.log(data);
+          })
   }
 }

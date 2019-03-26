@@ -19,7 +19,7 @@
             name: {{item.name}} <br>
             Id : {{item.poolId}}
             <h2> PickUp Point: {{item.pickupPoint}}</h2>
-            Status: <p *ngIf="item.accepted"> Accepted</p><p *ngIf="!item.accepted"> Not Accepted contact to owner</p>
+            Status: <span *ngIf="item.accepted"> Accepted</span><span *ngIf="!item.accepted"> Not Accepted contact to owner</span>
           </button>
 
           <ion-item-options>
