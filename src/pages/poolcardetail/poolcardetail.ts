@@ -29,18 +29,26 @@ export class PoolcardetailPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad PoolcardetailPage');
     let params = new HttpParams().set('id', this.item._id);
-   this.http.get('http://localhost:8080/api/addpoolcars/', {params}).subscribe(data=>{
+   this.http.get('http://3.18.254.134:8080/api/addpoolcars/', {params}).subscribe(data=>{
      this.addpoolCar = <AddpoolcarInterface[]> data;
      console.log(this.addpoolCar);
    })
   }
 
   accept(list: AddpoolcarInterface) {
-    const url="http://localhost:8080/api/addpoolcars/";
+    const url="http://3.18.254.134:8080/api/addpoolcars/";
     console.log('called'+list._id);
           this.http.put(url+list._id, {"accepted": true}).subscribe(data=>{
             this.navCtrl.setRoot(MainPage);
               console.log(data);
           })
+  }
+  reject(list: AddpoolcarInterface) {
+    const url="http://3.18.254.134:8080/api/addpoolcars/";
+    console.log('called'+list._id);
+    this.http.put(url+list._id, {"rejected": true}).subscribe(data=>{
+      this.navCtrl.setRoot(MainPage);
+      console.log(data);
+    })
   }
 }

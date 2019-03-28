@@ -35,10 +35,10 @@ export class SignupPage {
 
  async doSignup() {
     // Attempt to login in through our User service
-   this.http.get('http://localhost:8080/api/users').subscribe(data=>{
+   this.http.get('http://3.18.254.134:8080/api/users').subscribe(data=>{
      this.datavalid = <Profile[]>data;
      if(this.datavalid.findIndex(obj=>obj.email == this.account.email) < 0) {
-       this.http.post('http://localhost:8080/api/users', this.account).subscribe(data => {
+       this.http.post('http://3.18.254.134:8080/api/users', this.account).subscribe(data => {
          const temp = <Profile> data;
          localStorage.setItem("userDetail", temp._id);
            sessionStorage.setItem("id", temp._id);

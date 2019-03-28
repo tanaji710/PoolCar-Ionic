@@ -25,7 +25,7 @@ export class MycreatepoolPage {
   ionViewDidLoad() {
     let params = new HttpParams().set('id', localStorage.getItem('userDetails'));
     console.log('ionViewDidLoad MycreatepoolPage');
-this.http.get('http://localhost:8080/api/poolcars/',{params}).subscribe(data=>{
+this.http.get('http://3.18.254.134:8080/api/poolcars/',{params}).subscribe(data=>{
     this.poolcarData = <PoolCar[]> data;
   this.poolcarData.forEach((item, index) => {
     if(item.UserId == localStorage.getItem('userDetail')){

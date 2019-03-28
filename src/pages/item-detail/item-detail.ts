@@ -26,10 +26,12 @@ console.log(this.item);
     "contact": this.addpoolCar.contact,
     "poolId": this.item._id,
     "UserId": localStorage.getItem('userDetail'),
-    "accepted": false
+    "accepted": false,
+      "rejected": false,
+      "pickupPoint": this.addpoolCar.pickupPoint
     }
   console.log(temp);
-    this.http.post('http://localhost:8080/api/addpoolcars/', temp).subscribe(data=>{
+    this.http.post('http://3.18.254.134:8080/api/addpoolcars/', temp).subscribe(data=>{
       let toast = this.toastCtrl.create({
         message: 'Car Pool Added Successful',
         duration: 3000,

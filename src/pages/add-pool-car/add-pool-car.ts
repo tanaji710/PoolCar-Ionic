@@ -49,7 +49,7 @@ export class AddPoolCarPage {
 
   }
   console.log(temp);
-    this.http.post('http://localhost:8080/api/poolcars/', temp).subscribe(data => {
+    this.http.post('http://3.18.254.134:8080/api/poolcars/', temp).subscribe(data => {
       console.log(data);
       let toast = this.toastCtrl.create({
         message: 'Car Pool Added Successful',

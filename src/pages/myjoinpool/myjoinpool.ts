@@ -25,7 +25,7 @@ export class MyjoinpoolPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad MyjoinpoolPage'+ localStorage.getItem('userDetails'));
     let params = new HttpParams().set('id', localStorage.getItem('userDetails'));
-    this.http.get('http://localhost:8080/api/addpoolcars/', {params}).subscribe(data=>{
+    this.http.get('http://3.18.254.134:8080/api/addpoolcars/', {params}).subscribe(data=>{
       this.poolcarData = <AddpoolcarInterface[]> data;
       this.poolcarData.forEach((item, index) => {
         if(item.UserId == localStorage.getItem('userDetail')){

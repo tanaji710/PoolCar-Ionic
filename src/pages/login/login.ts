@@ -39,7 +39,7 @@ export class LoginPage {
 
   // Attempt to login in through our User service
   async doLogin() {
-    this.http.post('http://localhost:8080/api/users/login/', this.account).subscribe(data=>{
+    this.http.post('http://3.18.254.134:8080/api/users/login/', this.account).subscribe(data=>{
       console.log(Object.keys(data).length);
       const temp = <ItemInterface> data;
       if(!temp.message) {

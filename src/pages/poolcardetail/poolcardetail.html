@@ -27,7 +27,11 @@
        <p>name: {{list?.name}}</p>
        <p>pickup Point: {{list?.pickupPoint}}</p>
        <p>contact :{{list?.contact}}</p>
-       <button ion-button *ngIf="!list?.accepted" (click)="accept(list)">Accept</button>
+       <span *ngIf="!list.accepted && !list.rejected">Status: Not Accepted contact to owner</span>
+       <p *ngIf="list?.accepted">Status: Accepted</p>
+       <p *ngIf="list?.rejected">Status: Rejected</p>
+       <button ion-button *ngIf="!list?.accepted || !list?.rejected" (click)="accept(list)">Accept</button>
+       <button ion-button style="background: red" *ngIf="!list?.rejected || !list?.accepted" (click)="reject(list)">reject</button>
        <hr>
      </ion-item>
    </ion-list>

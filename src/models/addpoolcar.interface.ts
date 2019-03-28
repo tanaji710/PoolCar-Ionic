@@ -5,6 +5,7 @@ export interface AddpoolcarInterface {
   poolId: string;
   UserId: string;
   accepted: boolean;
+  rejected: boolean;
   pickupPoint: string;
 _id: string;
 }
