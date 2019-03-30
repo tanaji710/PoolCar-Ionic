@@ -28,8 +28,8 @@
        <p>pickup Point: {{list?.pickupPoint}}</p>
        <p>contact :{{list?.contact}}</p>
        <span *ngIf="!list.accepted && !list.rejected">Status: Not Accepted contact to owner</span>
-       <p *ngIf="list?.accepted">Status: Accepted</p>
-       <p *ngIf="list?.rejected">Status: Rejected</p>
+       <p *ngIf="list?.accepted==true; else rej">Status: Accepted</p>
+       <ng-template #rej>Status: Rejected</ng-template>
        <button ion-button *ngIf="!list?.accepted || !list?.rejected" (click)="accept(list)">Accept</button>
        <button ion-button style="background: red" *ngIf="!list?.rejected || !list?.accepted" (click)="reject(list)">reject</button>
        <hr>
