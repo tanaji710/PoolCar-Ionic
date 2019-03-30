@@ -8,6 +8,7 @@ import { MainPage } from '../';
 import {HttpClient} from "@angular/common/http";
 import {Profile} from "../../models/profile.interface";
 import {ItemInterface} from "../../models/dataMessage";
+import {ForgotPasswordPage} from "../forgot-password/forgot-password";
 
 @IonicPage()
 @Component({
@@ -72,5 +73,9 @@ export class LoginPage {
       });
       toast.present();
     })
+  }
+
+  gotoForgot() {
+    this.navCtrl.push(ForgotPasswordPage);
   }
 }

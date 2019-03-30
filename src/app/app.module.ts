@@ -21,6 +21,7 @@ import {PoolcardetailPageModule} from "../pages/poolcardetail/poolcardetail.modu
 import {MyjoinpoolPage} from "../pages/myjoinpool/myjoinpool";
 import {MyjoinpoolPageModule} from "../pages/myjoinpool/myjoinpool.module";
 import {MycreatepoolPageModule} from "../pages/mycreatepool/mycreatepool.module";
+import {ForgotPasswordPageModule} from "../pages/forgot-password/forgot-password.module";
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -65,6 +66,7 @@ export function provideSettings(storage: Storage) {
     PoolcardetailPageModule,
     MyjoinpoolPageModule,
     MycreatepoolPageModule,
+    ForgotPasswordPageModule,
     IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
