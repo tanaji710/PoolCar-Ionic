@@ -34,7 +34,7 @@ export class ForgotPasswordPage {
         "body": "",
         "subject": "CarPool password recovery mail"
       }
-      this.http.post("http://3.18.254.134:8080/api/users/sendmail/", temp).subscribe(data=>{
+      this.http.post("http://localhost:8080/api/users/sendmail/", temp).subscribe(data=>{
         let toast = this.toastCtrl.create({
           message: "Password sent on your mail please check",
           duration: 3000,
