@@ -5,6 +5,7 @@ import {AddpoolcarInterface} from "../../models/addpoolcar.interface";
 import {Items} from "../../mocks/providers/items";
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {MainPage} from "../index";
+import {iterateListLike} from "@angular/core/src/change_detection/change_detection_util";
 
 /**
  * Generated class for the PoolcardetailPage page.
@@ -21,6 +22,7 @@ import {MainPage} from "../index";
 export class PoolcardetailPage {
   item: PoolCar;
   public  addpoolCar: AddpoolcarInterface[];
+  public pooldata:  Array<AddpoolcarInterface> = [];
   constructor(public navCtrl: NavController, public navParams: NavParams, items: Items, private http: HttpClient) {
     this.item = navParams.get('item') || items.defaultItem;
     console.log(this.item);
@@ -29,9 +31,16 @@ export class PoolcardetailPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad PoolcardetailPage');
     let params = new HttpParams().set('id', this.item._id);
+    console.log(this.item._id)
    this.http.get('http://3.18.254.134:8080/api/addpoolcars/', {params}).subscribe(data=>{
      this.addpoolCar = <AddpoolcarInterface[]> data;
-     console.log(this.addpoolCar);
+     this.addpoolCar.forEach((item1, index) => {
+       if(item1.poolId == this.item._id){
+         this.pooldata.push(item1);
+       }
+
+     })
+     console.log('Pooldata'+this.pooldata);
    })
   }
 
