@@ -19,9 +19,8 @@
             name: {{item.name}} <br>
             Id : {{item.poolId}}
             <h2> PickUp Point: {{item.pickupPoint}}</h2>
-             <span *ngIf="!item.accepted && !item.rejected">Status : Not Accepted contact to owner</span>
-            <span *ngIf="item?.accepted; else rej">Status: Accepted</span>
-           <ng-template #rej>Status: Rejected</ng-template>
+             <span *ngIf="item.status==''; else rej">Status : Not Accepted contact to owner</span>
+           <ng-template #rej>Status: {{item.status}}</ng-template>
           </button>
 
           <ion-item-options>

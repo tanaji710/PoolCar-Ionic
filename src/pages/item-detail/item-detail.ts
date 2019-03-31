@@ -28,7 +28,8 @@ console.log(this.item);
     "UserId": localStorage.getItem('userDetail'),
     "accepted": false,
       "rejected": false,
-      "pickupPoint": this.addpoolCar.pickupPoint
+      "pickupPoint": this.addpoolCar.pickupPoint,
+      "status": ""
     }
   console.log(temp);
     this.http.post('http://3.18.254.134:8080/api/addpoolcars/', temp).subscribe(data=>{

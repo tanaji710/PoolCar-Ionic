@@ -16,7 +16,7 @@
     <p> <ion-icon name="contact"></ion-icon> : {{item.name}}</p>
     <p><ion-icon name="call"></ion-icon> : {{item.contact}}</p>
   <br>
-    <div>
+    <div *ngIf="item.seats!=0; else cannot">
       <ion-label>Fill following form to book</ion-label>
       <ion-item>
         <ion-label floating>Adhaar No</ion-label>
@@ -36,5 +36,8 @@
       </ion-item>
       <button ion-button (click)="request()">Book Car Pool</button>
     </div>
+  <ng-template #cannot ><div>
+    You cannot apply for this pool no seats available
+  </div></ng-template>
 
 </ion-content>

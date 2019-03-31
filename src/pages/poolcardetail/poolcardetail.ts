@@ -38,15 +38,19 @@ export class PoolcardetailPage {
   accept(list: AddpoolcarInterface) {
     const url="http://3.18.254.134:8080/api/addpoolcars/";
     console.log('called'+list._id);
-          this.http.put(url+list._id, {"accepted": true}).subscribe(data=>{
-            this.navCtrl.setRoot(MainPage);
+          this.http.put(url+list._id, {"status": 'accepted'}).subscribe(data=>{
+            let temp = this.item.seats-1;
+            let url ="http://3.18.254.134:8080/api/poolcars/"
+            this.http.put(url+this.item._id, {"seats": temp}).subscribe(data1 =>{
+              this.navCtrl.setRoot(MainPage);
               console.log(data);
-          })
+            })
+           })
   }
   reject(list: AddpoolcarInterface) {
     const url="http://3.18.254.134:8080/api/addpoolcars/";
     console.log('called'+list._id);
-    this.http.put(url+list._id, {"rejected": true}).subscribe(data=>{
+    this.http.put(url+list._id, {"status": 'rejected'}).subscribe(data=>{
       this.navCtrl.setRoot(MainPage);
       console.log(data);
     })

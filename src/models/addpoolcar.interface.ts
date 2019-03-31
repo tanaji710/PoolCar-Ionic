@@ -7,5 +7,6 @@ export interface AddpoolcarInterface {
   accepted: boolean;
   rejected: boolean;
   pickupPoint: string;
+  status: string;
 _id: string;
 }
