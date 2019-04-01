@@ -8,24 +8,24 @@
 
 
 <ion-content>
-  <form (submit)="doSignup()">
+  <form [formGroup]="signup" (submit)="doSignup()">
     <ion-list>
 
       <ion-item>
         <ion-label floating>First Name</ion-label>
-        <ion-input type="text" [(ngModel)]="account.firstName" name="fname"></ion-input>
+        <ion-input type="text" [(ngModel)]="account.firstName" name="fname" required formControlName="fname"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label floating>Last Name</ion-label>
-        <ion-input type="text" [(ngModel)]="account.lastName" name="lname"></ion-input>
+        <ion-input type="text" [(ngModel)]="account.lastName" name="lname" required formControlName="lname"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label floating>{{ 'EMAIL' | translate }}</ion-label>
-        <ion-input type="email" [(ngModel)]="account.email" name="email"></ion-input>
+        <ion-input type="email" [(ngModel)]="account.email" name="email" required formControlName="email"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label floating>Contact</ion-label>
-        <ion-input type="text" [(ngModel)]="account.contact" name="contact"></ion-input>
+        <ion-input type="number" [(ngModel)]="account.contact" name="contact" required formControlName="contact"></ion-input>
       </ion-item>
       <!--
       Want to add a Username? Here you go:
@@ -38,7 +38,7 @@
 
       <ion-item>
         <ion-label floating>{{ 'PASSWORD' | translate }}</ion-label>
-        <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
+        <ion-input type="password" [(ngModel)]="account.password" name="password" required formControlName="password"></ion-input>
       </ion-item>
 
       <div padding>
