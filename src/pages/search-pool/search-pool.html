@@ -12,9 +12,10 @@
 
 <ion-content padding>
   <ion-list>
+    <form (ngSubmit)="search()">
   <ion-item>
     <ion-label fixed>From</ion-label>
-    <ion-select placeholder="Select from location" [(ngModel)]="pooCarDetails.from">
+    <ion-select placeholder="Select from location" [(ngModel)]="pooCarDetails.from" name="from" required>
       <ion-option value="Sangli">Sangli</ion-option>
       <ion-option value="Miraj">Miraj</ion-option>
       <ion-option value="Kupwad">Kupwad</ion-option>
@@ -22,7 +23,7 @@
   </ion-item>
   <ion-item>
     <ion-label fixed>To</ion-label>
-    <ion-select placeholder="Select to location" [(ngModel)]="pooCarDetails.to">
+    <ion-select placeholder="Select to location" [(ngModel)]="pooCarDetails.to" name="to" required>
       <ion-option value="Ashta">Ashta</ion-option>
       <ion-option value="Islampur">Islampur</ion-option>
       <ion-option value="Karad">Karad</ion-option>
@@ -31,18 +32,22 @@
   </ion-item>
   <ion-item>
     <ion-label fixed>Date</ion-label>
-    <ion-datetime display-format="MMM DD, YYYY HH:mm" [(ngModel)]="pooCarDetails.date"></ion-datetime>
+    <ion-datetime display-format="MMM DD, YYYY HH:mm" [(ngModel)]="pooCarDetails.date" name="onDate" required></ion-datetime>
   </ion-item>
+    <ion-item>
+      <button ion-button type="submit">Search</button>
+    </ion-item>
+    </form>
   </ion-list>
   <ion-list>
-<ion-card *ngFor="let item of poolcarData">
+<ion-card *ngFor="let item of poolcars">
   <ion-card-content>
     <ion-item-sliding>
       <button ion-item (click)="openItem(item)">
-        {{item.from}} To {{item.to}}<br>
-        <ion-icon ios="ios-time" md="md-time"></ion-icon> : {{item.time}}
-        <h2> <ion-icon name="car"></ion-icon> : {{item.carName}}</h2>
-        <p> <ion-icon name="contact"></ion-icon> : {{item.name}}</p>
+        {{item?.from}} To {{item?.to}}<br>
+        <ion-icon ios="ios-time" md="md-time"></ion-icon> : {{item?.time}}
+        <h2> <ion-icon name="car"></ion-icon> : {{item?.carName}}</h2>
+        <p> <ion-icon name="contact"></ion-icon> : {{item?.name}}</p>
       </button>
 
       <ion-item-options>
