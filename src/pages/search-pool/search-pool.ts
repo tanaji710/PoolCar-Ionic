@@ -28,7 +28,7 @@ export class SearchPoolPage {
   }
 
   ionViewDidLoad() {
-    this.http.get('http://3.18.254.134:8080/api/poolcars').subscribe(data=>{
+    this.http.get('http://18.204.58.241:8080/api/poolcars').subscribe(data=>{
       this.poolcarData = <PoolCar[]> data;
       console.log(this.poolcarData);
     })

@@ -62,10 +62,10 @@ export class SignupPage {
      toast.present();
    }
    if(this.signup.valid) {
-     this.http.get('http://3.18.254.134:8080/api/users').subscribe(data => {
+     this.http.get('http://18.204.58.241:8080/api/users').subscribe(data => {
        this.datavalid = <Profile[]>data;
        if (this.datavalid.findIndex(obj => obj.email == this.account.email) < 0) {
-         this.http.post('http://3.18.254.134:8080/api/users', this.account).subscribe(data => {
+         this.http.post('http://18.204.58.241:8080/api/users', this.account).subscribe(data => {
              const temp = <Profile>data;
              localStorage.setItem("userDetail", temp._id);
              sessionStorage.setItem("id", temp._id);

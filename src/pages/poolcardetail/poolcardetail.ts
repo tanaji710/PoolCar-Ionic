@@ -32,7 +32,7 @@ export class PoolcardetailPage {
     console.log('ionViewDidLoad PoolcardetailPage');
     let params = new HttpParams().set('id', this.item._id);
     console.log(this.item._id)
-   this.http.get('http://3.18.254.134:8080/api/addpoolcars/', {params}).subscribe(data=>{
+   this.http.get('http://18.204.58.241:8080/api/addpoolcars/', {params}).subscribe(data=>{
      this.addpoolCar = <AddpoolcarInterface[]> data;
      this.addpoolCar.forEach((item1, index) => {
        if(item1.poolId == this.item._id){
@@ -45,11 +45,11 @@ export class PoolcardetailPage {
   }
 
   accept(list: AddpoolcarInterface) {
-    const url="http://3.18.254.134:8080/api/addpoolcars/";
+    const url="http://18.204.58.241:8080/api/addpoolcars/";
     console.log('called'+list._id);
           this.http.put(url+list._id, {"status": 'accepted'}).subscribe(data=>{
             let temp = this.item.seats-1;
-            let url ="http://3.18.254.134:8080/api/poolcars/"
+            let url ="http://18.204.58.241:8080/api/poolcars/"
             this.http.put(url+this.item._id, {"seats": temp}).subscribe(data1 =>{
               this.navCtrl.setRoot(MainPage);
               console.log(data);
@@ -57,7 +57,7 @@ export class PoolcardetailPage {
            })
   }
   reject(list: AddpoolcarInterface) {
-    const url="http://3.18.254.134:8080/api/addpoolcars/";
+    const url="http://18.204.58.241:8080/api/addpoolcars/";
     console.log('called'+list._id);
     this.http.put(url+list._id, {"status": 'rejected'}).subscribe(data=>{
       this.navCtrl.setRoot(MainPage);

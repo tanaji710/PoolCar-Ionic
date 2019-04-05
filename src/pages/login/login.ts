@@ -63,7 +63,7 @@ export class LoginPage {
       toast.present();
     }
     if(this.login.valid) {
-      this.http.post('http://3.18.254.134:8080/api/users/login/', this.account).subscribe(data => {
+      this.http.post('http://18.204.58.241:8080/api/users/login/', this.account).subscribe(data => {
         console.log(Object.keys(data).length);
         const temp = <ItemInterface>data;
         if (!temp.message) {

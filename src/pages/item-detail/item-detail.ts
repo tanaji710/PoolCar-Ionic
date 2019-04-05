@@ -42,7 +42,7 @@ console.log(this.item);
         "status": ""
       }
       console.log(temp);
-      this.http.post('http://3.18.254.134:8080/api/addpoolcars/', temp).subscribe(data => {
+      this.http.post('http://18.204.58.241:8080/api/addpoolcars/', temp).subscribe(data => {
         let toast = this.toastCtrl.create({
           message: 'Car Pool Added Successful',
           duration: 3000,
